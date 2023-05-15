@@ -112,92 +112,92 @@ for i in range(numEpisodes):
             if chosen_action == 0:  # a1
                 randValue = random.random()
                 if randValue < 0.7:
-                    reward = generateGaussianReward(10.0, 1.0)
+                    reward = generateGaussianReward(-40.0, 1.0)
                     nextState = 1  # s2
                 else:
-                    reward = generateGaussianReward(30.0, 0.5)
+                    reward = generateGaussianReward(-20.0, 0.5)
                     nextState = 2  # s3
             elif chosen_action == 1:  # a2
-                reward = generateGaussianReward(70.0, 1.0)
+                reward = generateGaussianReward(20.0, 1.0)
                 nextState = 2  # s3
             elif chosen_action == 3:  # a4
                 randValue = random.random()
                 if randValue < 0.8:
-                    reward = generateGaussianReward(20.0, 8.0)
+                    reward = generateGaussianReward(-30.0, 8.0)
                     nextState = 1  # s2
                 else:
-                    reward = generateGaussianReward(-100.0, 3.0)
+                    reward = generateGaussianReward(-150.0, 3.0)
                     nextState = 8  # t3
         elif currentState == 1:  # s2
             if chosen_action == 0:  # a1
                 randValue = random.random()
                 if randValue < 0.8:
-                    reward = generateGaussianReward(70.0, 1.0)
+                    reward = generateGaussianReward(20.0, 1.0)
                     nextState = 6  # t1
                 else:
-                    reward = generateGaussianReward(-30.0, 2.0)
+                    reward = generateGaussianReward(-80.0, 2.0)
                     nextState = 7  # t2
             elif chosen_action == 1:  # a2
-                reward = generateGaussianReward(-40.0, 1.0)
+                reward = generateGaussianReward(-90.0, 1.0)
                 nextState = 7  # t2
             elif chosen_action == 3:  # a4
-                reward = generateGaussianReward(80.0, 3.0)
+                reward = generateGaussianReward(30.0, 3.0)
                 nextState = 6  # t1
         elif currentState == 2:  # s3
             if chosen_action == 2:  # a3
-                reward = generateGaussianReward(70.0, 2.0)
+                reward = generateGaussianReward(20.0, 2.0)
                 nextState = 6  # t1
             elif chosen_action == 3:  # a4
-                reward = generateGaussianReward(-30.0, 0.5)
+                reward = generateGaussianReward(-80.0, 0.5)
                 nextState = 0  # s1
         elif currentState == 3:  # s4
             if chosen_action == 3:  # a4
                 randValue = random.random()
                 if randValue < 0.9:
-                    reward = generateGaussianReward(50.0, 5.0)
+                    reward = generateGaussianReward(0.0, 5.0)
                     nextState = 4  # s5
                 else:
-                    reward = generateGaussianReward(-50.0, 1.0)
+                    reward = generateGaussianReward(-100.0, 1.0)
                     nextState = 5  # s6
             elif chosen_action == 4:  # a5
                 randValue = random.random()
                 if randValue < 0.6:
-                    reward = generateGaussianReward(40.0, 4.0)
+                    reward = generateGaussianReward(-10.0, 4.0)
                     nextState = 4  # s5
                 elif 0.6 <= randValue < 0.9:
-                    reward = generateGaussianReward(0.0, 1.0)
+                    reward = generateGaussianReward(-50.0, 1.0)
                     nextState = 3  # s4
                 else:
-                    reward = generateGaussianReward(-30.0, 3.0)
+                    reward = generateGaussianReward(-80.0, 3.0)
                     nextState = 7  # t2
         elif currentState == 4: # s5
             if chosen_action == 3: # a4
                 randValue = random.random()
                 if randValue < 0.7:
-                    reward = generateGaussianReward(-20.0, 2.0)
+                    reward = generateGaussianReward(-70.0, 2.0)
                     nextState = 7 # t2
                 else:
-                    reward = generateGaussianReward(75.0, 2.0)
+                    reward = generateGaussianReward(25.0, 2.0)
                     nextState = 6 # t1
             elif chosen_action == 4: # a5
                 randValue = random.random()
                 if randValue < 0.8:
-                    reward = generateGaussianReward(40.0, 0.8)
+                    reward = generateGaussianReward(-10.0, 0.8)
                     nextState = 2 # s3
                 else:
-                    reward = generateGaussianReward(10.0, 0.5)
+                    reward = generateGaussianReward(-40.0, 0.5)
                     nextState = 4 # s5
         elif currentState == 5: # s6
             if chosen_action == 1: # a2
                 randValue = random.random()
                 if randValue < 0.75:
-                    reward = generateGaussianReward(40.0, 3.0)
+                    reward = generateGaussianReward(-10.0, 3.0)
                     nextState = 4 # s5
                 else:
-                    reward = generateGaussianReward(50.0, 1.0)
+                    reward = generateGaussianReward(0.0, 1.0)
                     nextState = 2 # s3
             elif chosen_action == 2: # a3
-                reward = generateGaussianReward(30.0, 4.0)
+                reward = generateGaussianReward(-20.0, 4.0)
                 nextState = 1 # s2
         #print("immediate reward : ", reward)
 
