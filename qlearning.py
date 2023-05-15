@@ -59,20 +59,21 @@ def generateGaussianReward(mean, stddev):
     return reward
 
 # qtable 초기화
-qTable = np.zeros((NUM_STATES, NUM_ACTION))
+# qTable = np.zeros((NUM_STATES, NUM_ACTION))
+qTable = np.full((NUM_STATES, NUM_ACTION), -50.0)
 
 print("Initial Q-table")
 for i in range(NUM_STATES - NUM_TERMINAL):
     print(f"State {i+1}: {qTable[i]}")
 
 # 학습 파라미터 설정
-alpha = 0.01 # 학습률
-gamma = 0.95 # 할인인자
+alpha = 0.005 # 학습률
+gamma = 0.99 # 할인인자
 numEpisodes = 10000 # 에피소드 횟수 
 
-kInitialEpsilon = 0.8 # 초기 입실론 값
+kInitialEpsilon = 0.9 # 초기 입실론 값
 kMinEpsilon = 0.05 # 입실론 값의 최소값
-kDecayRate = 0.9995 # 입실론 값의 감소 비율(= 기존 앱실론 값의 99.9%로 감소)
+kDecayRate = 0.9995 # 입실론 값의 감소 비율(= 기존 앱실론 값의 99.95%로 감소)
 
 policy = EpsilonGreedyPolicy(kInitialEpsilon, kMinEpsilon, kDecayRate) # 입실론 그리디 정책 객체 생성
 
@@ -118,7 +119,7 @@ for i in range(numEpisodes):
                     reward = generateGaussianReward(-20.0, 0.5)
                     nextState = 2  # s3
             elif chosen_action == 1:  # a2
-                reward = generateGaussianReward(20.0, 1.0)
+                reward = generateGaussianReward(0.0, 1.0)
                 nextState = 2  # s3
             elif chosen_action == 3:  # a4
                 randValue = random.random()
@@ -290,27 +291,27 @@ ax2 = ax1.twinx()
 # 각 state에 대해 그래프 출력
 color = '#dfdfdf'
 ax2.plot(list(range(numEpisodes)), print_maxQvalue[0], color=color, label="Q(S1,a)")
-ax2.text(list(range(numEpisodes))[-1], print_maxQvalue[0][-1], " Q(S1,a)", ha='left', va='center', color='#555555')
+ax2.text(list(range(numEpisodes))[-1], print_maxQvalue[0][-1], "S1", ha='left', va='center', color='#555555')
 
 color = '#dddddd'
 ax2.plot(list(range(numEpisodes)), print_maxQvalue[1], color=color, label="Q(S2,a)")
-ax2.text(list(range(numEpisodes))[-1], print_maxQvalue[1][-1], " Q(S2,a)", ha='left', va='center', color='#555555')
+ax2.text(list(range(numEpisodes))[-1], print_maxQvalue[1][-1], "S2", ha='left', va='center', color='#555555')
 
 color = '#cdcdcd'
 ax2.plot(list(range(numEpisodes)), print_maxQvalue[2], color=color, label="Q(S3,a)")
-ax2.text(list(range(numEpisodes))[-1], print_maxQvalue[2][-1], " Q(S3,a)", ha='left', va='center', color='#555555')
+ax2.text(list(range(numEpisodes))[-1], print_maxQvalue[2][-1], "S3", ha='left', va='center', color='#555555')
 
 color = '#cccccc'
 ax2.plot(list(range(numEpisodes)), print_maxQvalue[3], color=color, label="Q(S4,a)")
-ax2.text(list(range(numEpisodes))[-1], print_maxQvalue[3][-1], " Q(S4,a)", ha='left', va='center', color='#555555')
+ax2.text(list(range(numEpisodes))[-1], print_maxQvalue[3][-1], "S4", ha='left', va='center', color='#555555')
 
 color = '#bcbcbc'
 ax2.plot(list(range(numEpisodes)), print_maxQvalue[4], color=color, label="Q(S5,a)")
-ax2.text(list(range(numEpisodes))[-1], print_maxQvalue[4][-1], " Q(S5,a)", ha='left', va='center', color='#555555')
+ax2.text(list(range(numEpisodes))[-1], print_maxQvalue[4][-1], "S5", ha='left', va='center', color='#555555')
 
 color = '#aaaaaa'
 ax2.plot(list(range(numEpisodes)), print_maxQvalue[5], color=color, label="Q(S6,a)")
-ax2.text(list(range(numEpisodes))[-1], print_maxQvalue[5][-1], " Q(S6,a)", ha='left', va='center', color='#555555')
+ax2.text(list(range(numEpisodes))[-1], print_maxQvalue[5][-1], "S6", ha='left', va='center', color='#555555')
 
 color = 'tab:blue'
 ax2.set_ylabel("avg of maxQvalue", color=color)
